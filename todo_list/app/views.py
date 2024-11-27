@@ -56,3 +56,7 @@ def edit_todo(request, todo_id):
                   'todos.html',
                   {"action": 'edit', 'todo_object': todo, 'todos': todos_list}
                   )
+
+def filter_todos(request):
+    todos_list = Todo.objects.all().order_by('-id')
+    return render(request, 'todos.html', {'todos': todos_list})
